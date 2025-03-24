@@ -40,8 +40,12 @@ namespace K2XML_Converter
 			
 			// Must reserve a link for link label before use!
             this.linkLabel.Links.Add(0, 0, "joku");
-		}
-		
+
+            // Simulate button click on startup, for CLI usage
+            ButtonConvertClick(this, EventArgs.Empty);
+
+        }
+
         // How many files processed so far?
         int processed = 0;
 		
@@ -342,8 +346,9 @@ namespace K2XML_Converter
 				Console.WriteLine(errs);
 				return;
 			}
-				
-			inputPath = textBoxFolder.Text;
+			
+			// Hardcode a linux path
+			inputPath = "/k2xml";
 				
 			// Check that there actually is something to process.
 	        if (!System.IO.Directory.Exists( inputPath ) )
